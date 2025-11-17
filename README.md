@@ -7,8 +7,7 @@ To perform 8-bit arithmetic operations such as addition, subtraction, multiplica
 
 •	Laptop with Keil uVision software
 
-## Algorithm:![mpmc exp5a-1](https://github.com/user-attachments/assets/79ecc70a-0489-491e-a2e1-ec92a6b4d5fd)
-
+## Algorithm:
 
 ## For Addition:
 1.	Load the first number from memory location 30H into register A.
@@ -19,28 +18,21 @@ To perform 8-bit arithmetic operations such as addition, subtraction, multiplica
 
 ## Program:
 ```
- ORG 0000H
- MOV A, 30H     
-ADD A, 31H     
-MOV 40H, A     
-MOV A, #00H    
-MOV A, 00H     
-; Load first number from memory
- ; Add second number
- ; Store result in memory
- ; Clear A (use # for immediate data)
- ; <-- invalid (removing this)
- MOV 41H, #00H  ; Initialize carry storage as 0
- JNC SKIP_CARRY ; Jump if no carry
- MOV 41H, #01H  ; Store carry as 1 if CY = 1
- SKIP_CARRY: NOP
- END;
+ORG 0000H
+MOV A, 30H     
+ADD A, 31H    
+MOV 40H, A 
+JNC NEXT 
+MOV 41H, #01H
+SJMP END_PROGRAM
+NEXT: MOV 41H, #00H
+END_PROGRAM: NOP
+END
 ```
 
-
 ## Output:
-![mpmc exp5a-2](https://github.com/user-attachments/assets/f81225e9-f6f5-4d2d-b7f9-cc5eede19947)
-![mpmc exp5a-3](https://github.com/user-attachments/assets/cf0c1aa9-dbd0-4791-b018-abfca4abedd4)
+<img width="1919" height="1140" alt="image" src="https://github.com/user-attachments/assets/21bd48e1-38fc-4fa5-bba8-b0fff7e33055" />
+<img width="1919" height="1139" alt="image" src="https://github.com/user-attachments/assets/d622d80a-fe0b-4292-8f8c-cf06123d0a6a" />
 
    
 ## For Subtraction:
@@ -51,23 +43,21 @@ MOV A, 00H
 
 ## Program:
 ```
- ORG 0000H;
- MOV A, 30H;
- SUBB A,31H;
- MOV 40H,A;
- JNC NEXT;
- MOV 41H,#01H;
- SJMP END_PROGRAM;
- NEXT:MOV 41H,#00H;
- END_PROGRAM:NOP
-END;
+ORG 0000H
+MOV A, 30H
+SUBB A, 31H
+MOV 40H, A
+JNC NEXT
+MOV 41H, #01H
+SJMP END_PROGRAM
+NEXT: MOV 41H, #00H
+END_PROGRAM: NOP
+END
 ```
 
-
 ## Output:
-![mpmc exp5b-1](https://github.com/user-attachments/assets/7bc91273-98a0-4750-8d49-69ddf645571d)
-![mpmc exp5b-2](https://github.com/user-attachments/assets/7289125e-d6fb-43a7-bc4e-beac7b482286)
-
+<img width="1919" height="1140" alt="image" src="https://github.com/user-attachments/assets/bcf68f1b-5c78-4ddf-bfb8-a2de0a3a0cc9" />
+<img width="1919" height="1139" alt="image" src="https://github.com/user-attachments/assets/91b3f022-16ae-4f61-be52-6a5edb94d1f2" />
 
 ## For Multiplication:
 1.	Load the first number from memory location 30H into register A.
@@ -78,18 +68,18 @@ END;
 
 ## Program:
 ```
- MOV A,30H;
- MOV B, 31H;
- MUL AB;
- MOV 40H,A;
-MOV 41H,B;
- END;
+ORG 0000H
+MOV A, 30H 
+MOV B, 31H
+MUL AB
+MOV 40H, A 
+MOV 41H, B
+END
 ```
 
-
 ## Output:
-![mpmc exp5c-1](https://github.com/user-attachments/assets/0ac614f9-c7c4-4503-9349-70ef2ae546b3)
-![mpmc exp5c-2](https://github.com/user-attachments/assets/dcda2f7e-dbe1-4381-a44c-50aa1c995e1e)
+<img width="1918" height="1137" alt="image" src="https://github.com/user-attachments/assets/399c4ab6-c58c-41ca-a293-d010b2e46d9e" />
+<img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/79e572cb-7e8f-4180-84af-7fd950c09ac2" />
 
 
 ## For Division:
@@ -102,21 +92,18 @@ MOV 41H,B;
 
 ## Program:
 ```
- ORG 0000H;
- MOV A,30H;
- MOV B,31H;
- DIV AB;
- MOV 40H,A;
- MOV 41H,B;
- END;
+ORG 0000H
+MOV A, 30H
+MOV B, 31H
+DIV AB
+MOV 40H, A
+MOV 41H, B 
+END
 ```
 
-
-
 ## Output:
-
-![mpmc exp5d-1](https://github.com/user-attachments/assets/355a20bc-bc81-424b-8164-634c0a3e72c7)
-![mpmc exp5d-2](https://github.com/user-attachments/assets/678c552f-9928-482d-85b9-337769a88307)
+<img width="1918" height="1135" alt="image" src="https://github.com/user-attachments/assets/25c5eb00-1681-48b9-b245-547c304078b8" />
+<img width="1915" height="1135" alt="image" src="https://github.com/user-attachments/assets/45cab786-1956-418a-9309-c3464fc44812" />
 
 
 ## Result:
